@@ -15,13 +15,15 @@ class Grid:
 
     def place_ship(self):
         while True:
-            x = random.randit(0, self.size - 1)
-            y = random.randit(0, self.size - 1)
+            x = random.randint(0, self.size - 1)
+            y = random.randint(0, self.size - 1)
 
             if self.grid[x][y] == "*":
-                self.add_ship(x, y)
+                self.grid[x][y] = "S"
                 break
 
 
-grid = Grid(4)
+grid = Grid(3)
+grid.place_ship()
 grid.print_grid()
+
