@@ -2,9 +2,13 @@ import random
 
 
 class Grid:
-    def __init__(self, size):
+    def __init__(self, size, num_ships, name, type):
         self.size = size
         self.grid = [["*"] * size for _ in range(size)]
+        self.num_ships = num_ships
+        self.name = name
+        self.type = type
+        self.guesses = []
         self.ships = []
 
     def print_grid(self):
