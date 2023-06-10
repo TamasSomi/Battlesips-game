@@ -12,10 +12,12 @@ class Grid:
         self.ships = []
 
     def print_grid(self):
+        print(f"{self.name}'s board: \n")
         for row in self.grid:
             for col in row:
                 print(col, end=" ")
             print()
+        print()
 
     def place_ship(self):
         while True:
@@ -23,11 +25,16 @@ class Grid:
             y = random.randint(0, self.size - 1)
 
             if self.grid[x][y] == "*":
-                self.grid[x][y] = "S"
+                self.ships.append((x, y))
+                if self.type == "player":
+                    self.grid[x][y] = "S"
                 break
 
 
-grid = Grid(3)
-grid.place_ship()
-grid.print_grid()
+players_grid = Grid(3, 1, "Tommy", type="player")
+computers_grid = Grid(3, 1, "Computer", type="Computer")
+players_grid.place_ship()
+players_grid.print_grid()
+computers_grid.place_ship()
+computers_grid.print_grid()
 
