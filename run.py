@@ -44,6 +44,7 @@ def check_guess(attacker_grid, defender_grid, x, y):
     if (x, y) in defender_grid.ships:
         print("It's a hit!")
         defender_grid.grid[x][y] = "X"
+
     else:
         defender_grid.grid[x][y] = "M"
         print("Miss!")
@@ -70,6 +71,7 @@ def check_input():
         player_x = input(f"Please enter row number (0-{size - 1}): ")
 
     player_y = input(f"Please enter column number (0-{size - 1}): ")
+
     while not player_y.isdigit() or not (0 <= int(player_y) < size):
         print(f"{player_y} is not a valid input, please try again!")
         player_y = input(f"Please enter column number (0-{size - 1}): ")
@@ -81,6 +83,19 @@ def check_input():
         players_grid.guesses.append(player_guess)
         check_guess(players_grid, computers_grid, int(player_x), int(player_y))
 
+def check_winner(grid):
+    for ship in grid.ships:
+        x, y = ship
+        if grid.grid[x][y] != "X":
+            return False
+        
+    print(f"{grid.name} is the Winner!")
+    play_again = input("Would you like to play again? (yes / no): ").lower()
+    if play_again = "yes":
+        reset_game()
+    else:
+        print("Thanks for playing!")
+        exit()
 
 check_input()
 
