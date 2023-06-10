@@ -65,16 +65,21 @@ def check_guess(attacker_grid, defender_grid, x, y):
 
 def check_input():
     player_x = input(f"Please enter row number (0-{size - 1}: ")
-    while (int(player_x) < 0 or int(player_x) > size - 1):
+    while not player_x.isdigit() or not (0 <= int(player_x) < size):
         print(f"{player_x} is not a valid input, please try again!")
-        player_x = input(f"Please enter row number (0-{size - 1}: ")
+        player_x = input(f"Please enter row number (0-{size - 1}): ")
 
-    player_y = input(f"Please enter column number (0-{size - 1}: ")
-    while (int(player_y) < 0 or int(player_y) > size -1):
+    player_y = input(f"Please enter column number (0-{size - 1}): ")
+    while not player_y.isdigit() or not (0 <= int(player_y) < size):
         print(f"{player_y} is not a valid input, please try again!")
-        plyer_y = input(f"Please enter column number (0-{size - 1}: ")
-
-    check_guess(players_grid, computers_grid, int(player_x), int(player_y))
+        player_y = input(f"Please enter column number (0-{size - 1}): ")
+    player_guess = (int(player_x), int(player_y))
+    if player_guess in  players_grid.guesses:
+        print("You can't guess the same coordinates again...")
+        check_input()
+    else:
+        players_grid.guesses.append(player_guess)
+        check_guess(players_grid, computers_grid, int(player_x), int(player_y))
 
 
 check_input()
