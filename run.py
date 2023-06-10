@@ -59,6 +59,17 @@ def take_input():
         players_grid.guesses.append(player_guess)    
     return player_guess
 
+
+def create_computer_guess():
+    computer_x = random.randint(0, attacker_grid.size - 1)
+    computer_y = random.randint(0, attacker_grid.size - 1)
+    computer_guess = computer_x, computer_y
+    if computer_guess !in computers_grid.guesses:
+        computers_grid.guesses.append(computer_guess)
+    else:
+        create_computer_guess()
+
+
 # grid for the actual turn's grid and iput is for the guess
 def put_data_in_grid(grid, input):
     if grid.grid[input] == "S":
