@@ -1,7 +1,6 @@
 import random
 
 
-
 class Grid:
     def __init__(self, size, num_ships, name, type):
         self.size = size
@@ -40,6 +39,18 @@ computers_grid.place_ship()
 computers_grid.print_grid()
 size = players_grid.size
 
+
+# grid for the actual turn's grid and iput is for the guess
+# def put_data_in_grid(grid, input):
+#     if grid.grid[input[0]][input[1]] == "S":
+#         grid.grid[input[0]][input[1]] = "X"
+#     else:
+#         grid.grid[input[0]][input[1]] = "M"
+#         grid.guesses.append(input)
+#     if grid.type == "Computer":
+#         create_computer_guess()
+   
+
 def take_input():
     player_x = input(f"Please enter row number (0-{size - 1}: ")
 
@@ -55,31 +66,42 @@ def take_input():
     player_guess = (int(player_x), int(player_y))
     if player_guess in  players_grid.guesses:
         print("You can't guess the same coordinates again...")
+        take_input()
     else:
         players_grid.guesses.append(player_guess)    
-    return player_guess
+    # put_data_in_grid(computers_grid, player_guess)
+    if computers_grid.grid[player_guess[0]][player_guess[1]] == "S":
+        computers_grid.grid[player_guess[0]][player_guess[1]] = "X"
+    elif computers_grid.grid[player_guess[0]][player_guess[1]] == "*":
+        computers_grid.grid[player_guess[0]][player_guess[1]] = "M"
+        players_grid.guesses.append(player_guess)
+    create_computer_guess()
 
 
 def create_computer_guess():
-    computer_x = random.randint(0, attacker_grid.size - 1)
-    computer_y = random.randint(0, attacker_grid.size - 1)
-    computer_guess = computer_x, computer_y
-    if computer_guess !in computers_grid.guesses:
+    computer_x = random.randint(0, computers_grid.size - 1)
+    computer_y = random.randint(0, computers_grid.size - 1)
+    computer_guess = (int(computer_x), int(computer_y))
+    if computer_guess not in computers_grid.guesses:
         computers_grid.guesses.append(computer_guess)
     else:
         create_computer_guess()
-
-
-# grid for the actual turn's grid and iput is for the guess
-def put_data_in_grid(grid, input):
-    if grid.grid[input] == "S":
-        grid.grid[input] = "X"
-    else:
-        grid.grid[inpu] = "M"
-        grid.guesses.append(input)
+    computers_grid.guesses.append(computer_guess) 
+    if players_grid.grid[computer_guess[0]][computer_guess[1]] == "S":
+        players_grid.grid[computer_guess[0]][computer_guess[1]] = "X"
+    elif players_grid.grid[computer_guess[0]][computer_guess[1]] == "*":
+        players_grid.grid[computer_guess[0]][computer_guess[1]] = "M"
+        computers_grid.guesses.append(computer_guess)
+    players_grid.print_grid()
+    computers_grid.print_grid()
+    take_input()
+   
     
 
+def start_game():
+    take_input()
 
+start_game()
         
 
 # def check_guess(attacker_grid, defender_grid, x, y):
