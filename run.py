@@ -38,3 +38,22 @@ players_grid.print_grid()
 computers_grid.place_ship()
 computers_grid.print_grid()
 
+def check_guess(attacker_grid, defender_grid, x, y):
+    if (x, y) in defender_grid.ships:
+        print("It's a hit!")
+        defender_grid.grid[x][y] = "X"
+    else:
+        print("Miss!")
+    
+    defender_grid.guesses.append((x, y))
+    defender_grid.print_grid()
+
+    if attacker_grid.type == "Computer":
+        print("The computer's turn:")
+
+        computer_x = random.randint(0, attacker_grid.size - 1)
+        computer_y = random.randint(0, attacker_grid.size - 1)
+        check_guess(computers_grid, players_grid, computer_x, computer_y)
+    else:
+        print("Your turn:")
+
