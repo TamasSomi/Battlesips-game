@@ -29,27 +29,17 @@ class Grid:
                 if self.type == "Player":
                     self.grid[x][y] = "S"
                 break
+        return (x, y)
 
 
 players_grid = Grid(3, 1, "Tommy", type="Player")
 computers_grid = Grid(3, 1, "Computer", type="Computer")
 players_grid.place_ship()
 players_grid.print_grid()
-computers_grid.place_ship()
+computers_ship = computers_grid.place_ship()
+print(computers_ship)
 computers_grid.print_grid()
 size = players_grid.size
-
-
-# grid for the actual turn's grid and iput is for the guess
-# def put_data_in_grid(grid, input):
-#     if grid.grid[input[0]][input[1]] == "S":
-#         grid.grid[input[0]][input[1]] = "X"
-#     else:
-#         grid.grid[input[0]][input[1]] = "M"
-#         grid.guesses.append(input)
-#     if grid.type == "Computer":
-#         create_computer_guess()
-   
 
 def take_input():
     player_x = input(f"Please enter row number (0-{size - 1}: ")
@@ -70,7 +60,8 @@ def take_input():
     else:
         players_grid.guesses.append(player_guess)    
     # put_data_in_grid(computers_grid, player_guess)
-    if computers_grid.grid[player_guess[0]][player_guess[1]] == "S":
+    # if computers_grid.grid[player_guess[0]][player_guess[1]] == "S":
+    if computers_ship == player_guess:
         computers_grid.grid[player_guess[0]][player_guess[1]] = "X"
     elif computers_grid.grid[player_guess[0]][player_guess[1]] == "*":
         computers_grid.grid[player_guess[0]][player_guess[1]] = "M"
