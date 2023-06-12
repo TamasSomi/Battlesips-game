@@ -25,6 +25,7 @@ class Grid:
             y = random.randint(0, self.size - 1)
 
             if self.grid[x][y] == "*":
+                self.ships = []
                 self.ships.append((x, y))
                 if self.type == "Player":
                     self.grid[x][y] = "S"
@@ -72,7 +73,7 @@ def take_input():
         computers_grid.grid[player_guess[0]][player_guess[1]] = "X"
         computers_grid.print_grid()
         print("Congratulations You Won!🎉")
-        return 0
+        reset_game()
     elif computers_grid.grid[player_guess[0]][player_guess[1]] == "*":
         computers_grid.grid[player_guess[0]][player_guess[1]] = "M"
         players_grid.guesses.append(player_guess)
@@ -92,7 +93,7 @@ def create_computer_guess():
         players_grid.grid[computer_guess[0]][computer_guess[1]] = "X"
         players_grid.print_grid()
         print("Ouups... the Computer Won!🎉")
-        return 0
+        reset_game()
     elif players_grid.grid[computer_guess[0]][computer_guess[1]] == "*":
         players_grid.grid[computer_guess[0]][computer_guess[1]] = "M"
         computers_grid.guesses.append(computer_guess)
@@ -101,6 +102,30 @@ def create_computer_guess():
     computers_grid.print_grid()
     take_input()
 
+def reset_game():
+    new_game = input("Would you like to start a new game? yes/no ")
+    if new_game.lower() == "yes":
+        players_grid.guesses = []
+        players_grid.ships =[]
+        computers_grid.guesses = []
+        computers_grid.ships = []
+        players_grid.grid = [["*"] * size for _ in range(size)]
+        computers_grid.grid = [["*"] * size for _ in range(size)]
+        players_grid.place_ship()
+        players_grid.print_grid()
+        computers_ship = computers_grid.place_ship()
+        computers_grid.print_grid()
+        start_game()
+        return
+    elif new_game.lower() != "yes" and new_game.lower() != "no":
+        print("Incorrect input...")
+        reset_game()
+    else:
+        print(30*"_")
+        print(f"\n Thank you for playing {player_name}!")
+        print(30*"_")
+        exit()
+    
     
 def start_game():
     take_input()
