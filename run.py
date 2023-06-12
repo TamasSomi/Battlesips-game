@@ -31,8 +31,16 @@ class Grid:
                 break
         return (x, y)
 
+print(30*"_")
+print("\n Welcome to Battlesips Game!")
+print(30*"_")
+print()
+player_name = input("What is your name?: ")
+while not len(player_name) > 2:
+    print("Please provide a name (min 3 characters): ")
+    player_name = input("What is your name?: ")
 
-players_grid = Grid(3, 1, "Tommy", type="Player")
+players_grid = Grid(3, 1, player_name, type="Player")
 computers_grid = Grid(3, 1, "Computer", type="Computer")
 players_grid.place_ship()
 players_grid.print_grid()
@@ -42,7 +50,7 @@ computers_grid.print_grid()
 size = players_grid.size
 
 def take_input():
-    player_x = input(f"Please enter row number (0-{size - 1}: ")
+    player_x = input(f"Please enter row number (0-{size - 1}): ")
 
     while not player_x.isdigit() or not (0 <= int(player_x) < size):
         print(f"{player_x} is not a valid input, please try again!")
@@ -83,12 +91,12 @@ def create_computer_guess():
     elif players_grid.grid[computer_guess[0]][computer_guess[1]] == "*":
         players_grid.grid[computer_guess[0]][computer_guess[1]] = "M"
         computers_grid.guesses.append(computer_guess)
+    print(f"Computer guessed: {computer_guess}")
     players_grid.print_grid()
     computers_grid.print_grid()
     take_input()
    
     
-
 def start_game():
     take_input()
 
