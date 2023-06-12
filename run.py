@@ -107,6 +107,7 @@ def create_computer_guess():
 
 # Resets the game
 def reset_game():
+    random.seed()
     new_game = input("Would you like to start a new game? yes/no ")
     if new_game.lower() == "yes":
         players_grid.guesses = []
