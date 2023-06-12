@@ -2,6 +2,9 @@ import random
 
 
 class Grid:
+    """
+    A class to create the board and place the ship.
+    """
     def __init__(self, size, num_ships, name, type):
         self.size = size
         self.grid = [["*"] * size for _ in range(size)]
@@ -32,6 +35,7 @@ class Grid:
                 break
         return (x, y)
 
+
 print(30*"_")
 print("\n Welcome to Battlesips Game!")
 print(30*"_")
@@ -49,6 +53,7 @@ computers_ship = computers_grid.place_ship()
 computers_grid.print_grid()
 size = players_grid.size
 
+# Takes input from user, validates the data and puts in in the grid
 def take_input():
     player_x = input(f"Please enter row number (0-{size - 1}): ")
 
@@ -67,8 +72,6 @@ def take_input():
         take_input()
     else:
         players_grid.guesses.append(player_guess)    
-    # put_data_in_grid(computers_grid, player_guess)
-    # if computers_grid.grid[player_guess[0]][player_guess[1]] == "S":
     if computers_ship == player_guess:
         computers_grid.grid[player_guess[0]][player_guess[1]] = "X"
         computers_grid.print_grid()
@@ -79,7 +82,7 @@ def take_input():
         players_grid.guesses.append(player_guess)
     create_computer_guess()
 
-
+# Creates random num for computer and puts the guess in the grid
 def create_computer_guess():
     computer_x = random.randint(0, computers_grid.size - 1)
     computer_y = random.randint(0, computers_grid.size - 1)
@@ -102,6 +105,7 @@ def create_computer_guess():
     computers_grid.print_grid()
     take_input()
 
+# Resets the game
 def reset_game():
     new_game = input("Would you like to start a new game? yes/no ")
     if new_game.lower() == "yes":
@@ -131,66 +135,7 @@ def start_game():
     take_input()
 
 start_game()
-        
 
-# def check_guess(attacker_grid, defender_grid, x, y):
-#     if (x, y) in defender_grid.ships:
-#         print("It's a hit!")
-#         defender_grid.grid[x][y] = "X"
-
-#     else:
-#         defender_grid.grid[x][y] = "M"
-#         print("Miss!")
-    
-#     defender_grid.guesses.append((x, y))
-#     defender_grid.print_grid()
-#     attacker_grid.print_grid()
-
-#     if attacker_grid.type == "Player":
-#         print("The computer's turn:")
-
-#         computer_x = random.randint(0, attacker_grid.size - 1)
-#         computer_y = random.randint(0, attacker_grid.size - 1)
-#         check_guess(computers_grid, players_grid, computer_x, computer_y)
-#     else:
-#         print("Your turn:")
-#         check_input()
-
-
-# def check_input():
-#     player_x = input(f"Please enter row number (0-{size - 1}: ")
-#     while not player_x.isdigit() or not (0 <= int(player_x) < size):
-#         print(f"{player_x} is not a valid input, please try again!")
-#         player_x = input(f"Please enter row number (0-{size - 1}): ")
-
-#     player_y = input(f"Please enter column number (0-{size - 1}): ")
-
-#     while not player_y.isdigit() or not (0 <= int(player_y) < size):
-#         print(f"{player_y} is not a valid input, please try again!")
-#         player_y = input(f"Please enter column number (0-{size - 1}): ")
-#     player_guess = (int(player_x), int(player_y))
-#     if player_guess in  players_grid.guesses:
-#         print("You can't guess the same coordinates again...")
-#         check_input()
-#     else:
-#         players_grid.guesses.append(player_guess)
-#         check_guess(players_grid, computers_grid, int(player_x), int(player_y))
-
-# def check_winner(grid):
-#     for ship in grid.ships:
-#         x, y = ship
-#         if grid.grid[x][y] != "X":
-#             return False
-        
-#     print(f"{grid.name} is the Winner!")
-#     play_again = input("Would you like to play again? (yes / no): ").lower()
-#     if play_again == "yes":
-#         reset_game()
-#     else:
-#         print("Thanks for playing!")
-#         exit()
-
-# check_input()
 
 
 
