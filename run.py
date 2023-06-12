@@ -45,7 +45,6 @@ computers_grid = Grid(3, 1, "Computer", type="Computer")
 players_grid.place_ship()
 players_grid.print_grid()
 computers_ship = computers_grid.place_ship()
-print(computers_ship)
 computers_grid.print_grid()
 size = players_grid.size
 
@@ -71,6 +70,9 @@ def take_input():
     # if computers_grid.grid[player_guess[0]][player_guess[1]] == "S":
     if computers_ship == player_guess:
         computers_grid.grid[player_guess[0]][player_guess[1]] = "X"
+        computers_grid.print_grid()
+        print("Congratulations You Won!🎉")
+        return 0
     elif computers_grid.grid[player_guess[0]][player_guess[1]] == "*":
         computers_grid.grid[player_guess[0]][player_guess[1]] = "M"
         players_grid.guesses.append(player_guess)
@@ -88,6 +90,9 @@ def create_computer_guess():
     computers_grid.guesses.append(computer_guess) 
     if players_grid.grid[computer_guess[0]][computer_guess[1]] == "S":
         players_grid.grid[computer_guess[0]][computer_guess[1]] = "X"
+        players_grid.print_grid()
+        print("Ouups... the Computer Won!🎉")
+        return 0
     elif players_grid.grid[computer_guess[0]][computer_guess[1]] == "*":
         players_grid.grid[computer_guess[0]][computer_guess[1]] = "M"
         computers_grid.guesses.append(computer_guess)
@@ -95,7 +100,7 @@ def create_computer_guess():
     players_grid.print_grid()
     computers_grid.print_grid()
     take_input()
-   
+
     
 def start_game():
     take_input()
