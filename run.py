@@ -51,7 +51,9 @@ players_grid.place_ship()
 players_grid.print_grid()
 computers_ship = computers_grid.place_ship()
 computers_grid.print_grid()
+print(f"Computer's ship: {computers_ship}")
 size = players_grid.size
+
 
 # Takes input from user, validates the data and puts in in the grid
 def take_input():
@@ -67,11 +69,11 @@ def take_input():
         print(f"{player_y} is not a valid input, please try again!")
         player_y = input(f"Please enter column number (0-{size - 1}): ")
     player_guess = (int(player_x), int(player_y))
-    if player_guess in  players_grid.guesses:
+    if player_guess in players_grid.guesses:
         print("You can't guess the same coordinates again...")
         take_input()
     else:
-        players_grid.guesses.append(player_guess)    
+        players_grid.guesses.append(player_guess)
     if computers_ship == player_guess:
         computers_grid.grid[player_guess[0]][player_guess[1]] = "X"
         computers_grid.print_grid()
@@ -82,6 +84,7 @@ def take_input():
         players_grid.guesses.append(player_guess)
     create_computer_guess()
 
+
 # Creates random num for computer and puts the guess in the grid
 def create_computer_guess():
     computer_x = random.randint(0, computers_grid.size - 1)
@@ -91,7 +94,7 @@ def create_computer_guess():
         computers_grid.guesses.append(computer_guess)
     else:
         create_computer_guess()
-    computers_grid.guesses.append(computer_guess) 
+    computers_grid.guesses.append(computer_guess)
     if players_grid.grid[computer_guess[0]][computer_guess[1]] == "S":
         players_grid.grid[computer_guess[0]][computer_guess[1]] = "X"
         players_grid.print_grid()
@@ -105,38 +108,36 @@ def create_computer_guess():
     computers_grid.print_grid()
     take_input()
 
+
 # Resets the game
 def reset_game():
-    random.seed()
     new_game = input("Would you like to start a new game? yes/no ")
     if new_game.lower() == "yes":
+        global computers_ship
         players_grid.guesses = []
-        players_grid.ships =[]
+        players_grid.ships = []
+        computers_ship = computers_grid.place_ship()
         computers_grid.guesses = []
-        computers_grid.ships = []
+        computers_grid.ship = []
         players_grid.grid = [["*"] * size for _ in range(size)]
         computers_grid.grid = [["*"] * size for _ in range(size)]
         players_grid.place_ship()
         players_grid.print_grid()
-        computers_ship = computers_grid.place_ship()
         computers_grid.print_grid()
         start_game()
         return
     elif new_game.lower() != "yes" and new_game.lower() != "no":
         print("Incorrect input...")
-        reset_game()
+        return reset_game()
     else:
         print(30*"_")
         print(f"\n Thank you for playing {player_name}!")
         print(30*"_")
         exit()
-    
-    
+
+ 
 def start_game():
     take_input()
 
+
 start_game()
-
-
-
-

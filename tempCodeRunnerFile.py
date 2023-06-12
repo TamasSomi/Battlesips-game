@@ -1,1 +1,1 @@
-print(computers_ship)
+computers_grid.ships = []
