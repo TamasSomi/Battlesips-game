@@ -50,10 +50,10 @@ def starter_messages():
     print("S is your ship and X is the ship that has benn hit, * is undiscovered field")
     print(80*"_")
     print()
-    player_name = input("What is your name?: ")
+    player_name = input("What is your name?: \n")
     while not len(player_name) > 2:
         print("Please provide a name (min 3 characters): ")
-        player_name = input("What is your name?: ")
+        player_name = input("What is your name?: \n")
     return player_name
 
 player_name = starter_messages()
@@ -71,17 +71,17 @@ print(f"players ship: {players_grid.ships}")
 
 # Takes input from user, validates the data and puts in in the grid
 def take_input():
-    player_x = input(f"Please enter row number (0-{players_grid.size - 1}): ")
+    player_x = input(f"Please enter row number (0-{players_grid.size - 1}): \n")
 
     while not player_x.isdigit() or not (0 <= int(player_x) < players_grid.size):
         print(f"{player_x} is not a valid input, please try again!")
-        player_x = input(f"Please enter row number (0-{players_grid.size - 1}): ")
+        player_x = input(f"Please enter row number (0-{players_grid.size - 1}): \n")
 
-    player_y = input(f"Please enter column number (0-{players_grid.size - 1}): ")
+    player_y = input(f"Please enter column number (0-{players_grid.size - 1}): \n")
 
     while not player_y.isdigit() or not (0 <= int(player_y) < players_grid.size):
         print(f"{player_y} is not a valid input, please try again!")
-        player_y = input(f"Please enter column number (0-{players_grid.size - 1}): ")
+        player_y = input(f"Please enter column number (0-{players_grid.size - 1}): \n")
     player_guess = (int(player_x), int(player_y))
     if player_guess in players_grid.guesses:
         print("You can't guess the same coordinates again...")
@@ -135,7 +135,7 @@ def create_computer_guess():
 
 # Resets the game
 def reset_game():
-    new_game = input("Would you like to start a new game? yes/no ")
+    new_game = input("Would you like to start a new game? yes/no \n")
     if new_game.lower() == "yes":
         points[0] = 0
         points[1] = 0
