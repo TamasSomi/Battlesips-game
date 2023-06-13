@@ -63,7 +63,7 @@ computers_grid = Grid(4, 3, "Computer", type="Computer")
 
 players_grid.place_ship()
 players_grid.print_grid()
-computers_ship = computers_grid.place_ship()
+computers_grid.place_ship()
 computers_grid.print_grid()
 print(f"Computers ship: {computers_grid.ships}")
 print(f"players ship: {players_grid.ships}")
@@ -89,7 +89,7 @@ def take_input():
         take_input()
     else:
         players_grid.guesses.append(player_guess)
-    if player_guess in computers_ship:
+    if player_guess in computers_grid.ships:
         computers_grid.grid[player_guess[0]][player_guess[1]] = "X"
         computers_grid.print_grid()
         points[0] += 1
@@ -139,13 +139,12 @@ def create_computer_guess():
 def reset_game():
     new_game = input("Would you like to start a new game? yes/no ")
     if new_game.lower() == "yes":
-        global computers_ship
         points[0] = 0
         points[1] = 0
         players_grid.guesses = []
         players_grid.ships = []
         computers_grid.ships = []
-        computers_ship = computers_grid.place_ship()
+        computers_grid.place_ship()
         computers_grid.guesses = []
         players_grid.grid = [["*"] * size for _ in range(size)]
         computers_grid.grid = [["*"] * size for _ in range(size)]
