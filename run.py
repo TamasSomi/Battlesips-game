@@ -43,18 +43,24 @@ class Grid:
                 ships_to_place -= 1
         return self.ships
 
-
-print(30*"_")
-print("\n Welcome to Battlesips Game!")
-print(30*"_")
-print()
-player_name = input("What is your name?: ")
-while not len(player_name) > 2:
-    print("Please provide a name (min 3 characters): ")
+def starter_messages():
+    print(80*"_")
+    print("\n Welcome to Battlesips Game!")
+    print()
+    print("S is your ship and X is the ship that has benn hit, * is undiscovered field")
+    print(80*"_")
+    print()
     player_name = input("What is your name?: ")
+    while not len(player_name) > 2:
+        print("Please provide a name (min 3 characters): ")
+        player_name = input("What is your name?: ")
+    return player_name
+
+player_name = starter_messages()
 
 players_grid = Grid(4, 3, player_name, type="Player")
 computers_grid = Grid(4, 3, "Computer", type="Computer")
+
 players_grid.place_ship()
 players_grid.print_grid()
 computers_ship = computers_grid.place_ship()
