@@ -88,13 +88,14 @@ def take_input():
         computers_grid.print_grid()
         points[0] += 1
         print("It's a hit!💥")
-        print(f"Scores: {player_name}: {points[0]}, Computer: {points[1]}")
+        
     elif computers_grid.grid[player_guess[0]][player_guess[1]] == "*":
         computers_grid.grid[player_guess[0]][player_guess[1]] = "M"
         players_grid.guesses.append(player_guess)
     if points[0] == 3:
         print("Congratulations You Won!🎉")
         reset_game()
+    print(f"Scores: {player_name}: {points[0]}, Computer: {points[1]}")
     create_computer_guess()
 
 
@@ -113,7 +114,7 @@ def create_computer_guess():
         players_grid.print_grid()
         points[1] += 1
         print("The computer has a hit!💥")
-        print(f"Scores: {player_name}: {points[0]}, Computer: {points[1]}")
+        
     elif players_grid.grid[computer_guess[0]][computer_guess[1]] == "*":
         players_grid.grid[computer_guess[0]][computer_guess[1]] = "M"
         computers_grid.guesses.append(computer_guess)
@@ -124,6 +125,7 @@ def create_computer_guess():
 
     players_grid.print_grid()
     computers_grid.print_grid()
+    print(f"Scores: {player_name}: {points[0]}, Computer: {points[1]}")
     take_input()
 
 
