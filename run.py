@@ -67,22 +67,21 @@ computers_grid.place_ship()
 computers_grid.print_grid()
 print(f"Computers ship: {computers_grid.ships}")
 print(f"players ship: {players_grid.ships}")
-size = players_grid.size
 
 
 # Takes input from user, validates the data and puts in in the grid
 def take_input():
-    player_x = input(f"Please enter row number (0-{size - 1}): ")
+    player_x = input(f"Please enter row number (0-{players_grid.size - 1}): ")
 
-    while not player_x.isdigit() or not (0 <= int(player_x) < size):
+    while not player_x.isdigit() or not (0 <= int(player_x) < players_grid.size):
         print(f"{player_x} is not a valid input, please try again!")
-        player_x = input(f"Please enter row number (0-{size - 1}): ")
+        player_x = input(f"Please enter row number (0-{players_grid.size - 1}): ")
 
-    player_y = input(f"Please enter column number (0-{size - 1}): ")
+    player_y = input(f"Please enter column number (0-{players_grid.size - 1}): ")
 
-    while not player_y.isdigit() or not (0 <= int(player_y) < size):
+    while not player_y.isdigit() or not (0 <= int(player_y) < players_grid.size):
         print(f"{player_y} is not a valid input, please try again!")
-        player_y = input(f"Please enter column number (0-{size - 1}): ")
+        player_y = input(f"Please enter column number (0-{players_grid.size - 1}): ")
     player_guess = (int(player_x), int(player_y))
     if player_guess in players_grid.guesses:
         print("You can't guess the same coordinates again...")
@@ -146,8 +145,8 @@ def reset_game():
         computers_grid.ships = []
         computers_grid.place_ship()
         computers_grid.guesses = []
-        players_grid.grid = [["*"] * size for _ in range(size)]
-        computers_grid.grid = [["*"] * size for _ in range(size)]
+        players_grid.grid = [["*"] * players_grid.size for _ in range(players_grid.size)]
+        computers_grid.grid = [["*"] * players_grid.size for _ in range(players_grid.size)]
         players_grid.place_ship()
         players_grid.print_grid()
         computers_grid.print_grid()
