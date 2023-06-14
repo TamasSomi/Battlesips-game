@@ -47,8 +47,10 @@ def starter_messages():
     print(80*"_")
     print("\n Welcome to Battlesips Game!")
     print()
-    print("Everyone has 3-3 ships, the goal is to guess all the computers ships coordinates first.")
-    print("On the board * means undiscovered field, S means there is a ship and X is a ship that's been hit.")
+    print("Everyone has 3-3 ships.")
+    print("The goal is to guess all the computers ships coordinates first.")
+    print("On the board * means undiscovered field.")
+    print("S means there is a ship and X is a ship that's been hit.")
     print(80*"_")
     print()
     player_name = input("What is your name?: \n")
@@ -98,6 +100,7 @@ def take_input():
     elif computers_grid.grid[player_guess[0]][player_guess[1]] == "*":
         computers_grid.grid[player_guess[0]][player_guess[1]] = "M"
         players_grid.guesses.append(player_guess)
+        print("You missed! ")
     if points[0] == 3:
         print("Congratulations You Won!🎉")
         reset_game()
@@ -124,6 +127,7 @@ def create_computer_guess():
     elif players_grid.grid[computer_guess[0]][computer_guess[1]] == "*":
         players_grid.grid[computer_guess[0]][computer_guess[1]] = "M"
         computers_grid.guesses.append(computer_guess)
+        print("The computer missed!")
     if points[1] == 3:
         print("Ouups... the Computer Won!🎉")
         reset_game()
