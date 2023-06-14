@@ -6,7 +6,7 @@ points = [0, 0]
 
 class Grid:
     """
-    A class to create the board and place the ship.
+    A class to create the boards and place the ships.
     """
 
     def __init__(self, size, num_ships, name, type):
@@ -72,8 +72,12 @@ print(f"Computers ship: {computers_grid.ships}")
 print(f"players ship: {players_grid.ships}")
 
 
-# Takes input from user, validates the data and puts in in the grid
 def take_input():
+    """
+    Takes input from the user, validates the coordinates. Puts them 
+    in the grid checks for hit and reacts accordingly.
+    Calls create_computer_guess or reset_game function.
+    """
     player_x = input(f"Please enter row number (0-{players_grid.size - 1}): \n")
 
     while not player_x.isdigit() or not (0 <= int(player_x) < players_grid.size):
@@ -106,8 +110,13 @@ def take_input():
     create_computer_guess()
 
 
-# Creates random num for computer and puts the guess in the grid
+
 def create_computer_guess():
+    """
+    Creates random num for computer and puts the guess in the grid. Checks for hit
+    and reacts accordingly. Prints the grids. Calls reset game or take_input function.
+
+    """
     computer_x = random.randint(0, computers_grid.size - 1)
     computer_y = random.randint(0, computers_grid.size - 1)
     computer_guess = (int(computer_x), int(computer_y))
@@ -136,8 +145,10 @@ def create_computer_guess():
     take_input()
 
 
-# Resets the game
 def reset_game():
+    """
+    Resets everything for the starter values.
+    """
     new_game = input("Would you like to start a new game? yes/no \n")
     if new_game.lower() == "yes":
         points[0] = 0
