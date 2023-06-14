@@ -59,17 +59,18 @@ def starter_messages():
         player_name = input("What is your name?: \n")
     return player_name
 
-player_name = starter_messages()
+if __name__ == '__main__':
+    player_name = starter_messages()
 
-players_grid = Grid(4, 3, player_name, type="Player")
-computers_grid = Grid(4, 3, "Computer", type="Computer")
+    players_grid = Grid(4, 3, player_name, type="Player")
+    computers_grid = Grid(4, 3, "Computer", type="Computer")
 
-players_grid.place_ship()
-players_grid.print_grid()
-computers_grid.place_ship()
-computers_grid.print_grid()
-print(f"Computers ship: {computers_grid.ships}")
-print(f"players ship: {players_grid.ships}")
+    players_grid.place_ship()
+    players_grid.print_grid()
+    computers_grid.place_ship()
+    computers_grid.print_grid()
+    print(f"Computers ship: {computers_grid.ships}")
+    print(f"players ship: {players_grid.ships}")
 
 
 def take_input():
@@ -178,5 +179,5 @@ def reset_game():
 def start_game():
     take_input()
 
-
-start_game()
+if __name__ == '__main__':
+    start_game()
