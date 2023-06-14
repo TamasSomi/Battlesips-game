@@ -93,18 +93,16 @@ def take_input():
         players_grid.guesses.append(player_guess)
     if player_guess in computers_grid.ships:
         computers_grid.grid[player_guess[0]][player_guess[1]] = "X"
-        # computers_grid.print_grid()
         points[0] += 1
-        print("It's a hit!💥")
-        
+        print("It's a hit!💥") 
     elif computers_grid.grid[player_guess[0]][player_guess[1]] == "*":
         computers_grid.grid[player_guess[0]][player_guess[1]] = "M"
         players_grid.guesses.append(player_guess)
         print("You missed! ")
+    print(f"Scores: {player_name}: {points[0]}, Computer: {points[1]}")
     if points[0] == 3:
         print("Congratulations You Won!🎉")
         reset_game()
-    print(f"Scores: {player_name}: {points[0]}, Computer: {points[1]}")
     create_computer_guess()
 
 
@@ -129,9 +127,9 @@ def create_computer_guess():
         computers_grid.guesses.append(computer_guess)
         print("The computer missed!")
     if points[1] == 3:
+        print(f"Scores: {player_name}: {points[0]}, Computer: {points[1]}")
         print("Ouups... the Computer Won!🎉")
         reset_game()
-
     players_grid.print_grid()
     computers_grid.print_grid()
     print(f"Scores: {player_name}: {points[0]}, Computer: {points[1]}")
