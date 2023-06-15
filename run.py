@@ -83,21 +83,15 @@ def take_input():
     """
     player_x = input(f"Enter row number (0-{players_grid.size - 1}): \n")
 
-    while (not player_x.isdigit() or
-           not (0 <= int(player_x) < players_grid.size)):
+    while not player_x.isdigit() or not 0 <= int(player_x) < players_grid.size:
         print(f"{player_x} is not a valid input, please try again!")
         player_x = input(f"Enter row number (0-{players_grid.size - 1}): \n")
 
-    player_y = [
-        input(f"Please enter column number (0-{players_grid.size - 1}): \n")
-    ]
+    player_y = input(f"Enter column number (0-{players_grid.size - 1}): \n")
 
-    while (not player_y.isdigit() or
-           not (0 <= int(player_y) < players_grid.size)):
+    while not player_y.isdigit() or not 0 <= int(player_y) < players_grid.size:
         print(f"{player_y} is not a valid input, please try again!")
-        player_y = [
-            input(f"Enter column number (0-{players_grid.size - 1}): \n")
-        ]
+        player_y = input(f"Enter column number(0-{players_grid.size - 1}): \n")
     player_guess = (int(player_x), int(player_y))
     if player_guess in players_grid.guesses:
         print("You can't guess the same coordinates again...")

@@ -80,6 +80,16 @@ I used a chart to make easyer to build the game logic.
 
     ![screenshot of the python linter result.](/docs/python-linter.png)
 
+## Testing ##
+
+* The code were passed through the Code Institute PEP8 linter and no error were found.
+* The game tested manually no invalid input accepted and the user can not guess the same twice.
+* Ships placed as expected.
+* Points and grids always updated as expected.
+* When game ends winner printed and if selected game reset as expected.
+
+
+
 
 ## Deployment ##
 
