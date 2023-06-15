@@ -9,6 +9,16 @@ To read about original battleships game [click here.](https://en.wikipedia.org/w
 In this game both players (user, computer) has a grid/board of 4x4 and 3 ships. The goal is to guess the opponent ship's coordinates first. In this version every ship occupies only one field.
 
 
+## User Stories ##
+
+* As a visiting user i would like to set a user name.
+
+* As a visiting user i would like to avoid any errors if i insert invalid data.
+
+* As a visiting user i would like to see, what is happening after every turn. (e.g: Points and board updated)
+
+* As a visiting user i would like to have an obvius indication when the game finished.
+
 ## Features ##
 
 * Automatically created boards for both players.
