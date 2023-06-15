@@ -81,4 +81,25 @@ I used a chart to make easyer to build the game logic.
     ![screenshot of the python linter result.](/docs/python-linter.png)
 
 
+## Deployment ##
+
+* This project was deployed isung Code Institute's mock terminal for Heroku.
+
+* Steps for deployment:
+    * Fork or clone this repository
+    * Create a new Heroku app
+    * Set the buildpacks to Python and NodeJS in that order
+    * Reveal config vars and set the key to PORT and the value to 8000
+    * Link Heroku app to the repository
+    * click on Deploy
+
+
+## Credits ##
+
+* Code Institute for the deployment terminal
+* Code Institute project example readme
+* [W3 Scools](https://www.w3schools.com/) when i was struggling with something. 
+
+
+
 
