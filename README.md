@@ -8,3 +8,8 @@ To read about original battleships game [click here.](https://en.wikipedia.org/w
 
 In this game both players (user, computer) has a grid/board of 4x4 and 3 ships. The goal is to guess the opponent ship's coordinates first. In this version every ship occupies only one field.
 
+
+## Features ##
+
+* Automatically created boards for both players.
+

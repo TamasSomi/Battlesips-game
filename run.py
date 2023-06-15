@@ -69,8 +69,8 @@ if __name__ == '__main__':
     players_grid.print_grid()
     computers_grid.place_ship()
     computers_grid.print_grid()
-    print(f"Computers ship: {computers_grid.ships}")
-    print(f"players ship: {players_grid.ships}")
+    # print(f"Computer's ships: {computers_grid.ships}")
+    # print(f"Player's ships: {players_grid.ships}")
 
 
 def take_input():
