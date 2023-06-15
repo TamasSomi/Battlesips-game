@@ -19,6 +19,13 @@ In this game both players (user, computer) has a grid/board of 4x4 and 3 ships. 
 
 * As a visiting user i would like to have an obvius indication when the game finished.
 
+
+## Target audiance ##
+
+* People whom interested in playing a simple online game.
+
+* People whom interested in playing a game that mainly depends on luck.
+
 ## Features ##
 
 * Automatically created boards for both players.
@@ -48,5 +55,12 @@ In this game both players (user, computer) has a grid/board of 4x4 and 3 ships. 
 * The user can place her/his own ships.
 
 * There will be bigger ships than 1 field.
+
+
+## Planning ##
+
+I used a chart to make easyer to build the game logic.
+
+![screenshot of the chart created for game logic.](/docs/battleships-chart.png)
 
 
