@@ -43,6 +43,7 @@ class Grid:
                 ships_to_place -= 1
         return self.ships
 
+
 def starter_messages():
     print(80*"_")
     print("\n Welcome to Battlesips Game!")
@@ -58,6 +59,7 @@ def starter_messages():
         print("Please provide a name (min 3 characters): ")
         player_name = input("What is your name?: \n")
     return player_name
+
 
 if __name__ == '__main__':
     player_name = starter_messages()
@@ -75,21 +77,27 @@ if __name__ == '__main__':
 
 def take_input():
     """
-    Takes input from the user, validates the coordinates. Puts them 
+    Takes input from the user, validates the coordinates. Puts them
     in the grid checks for hit and reacts accordingly.
     Calls create_computer_guess or reset_game function.
     """
-    player_x = input(f"Please enter row number (0-{players_grid.size - 1}): \n")
+    player_x = input(f"Enter row number (0-{players_grid.size - 1}): \n")
 
-    while not player_x.isdigit() or not (0 <= int(player_x) < players_grid.size):
+    while (not player_x.isdigit() or
+           not (0 <= int(player_x) < players_grid.size)):
         print(f"{player_x} is not a valid input, please try again!")
-        player_x = input(f"Please enter row number (0-{players_grid.size - 1}): \n")
+        player_x = input(f"Enter row number (0-{players_grid.size - 1}): \n")
 
-    player_y = input(f"Please enter column number (0-{players_grid.size - 1}): \n")
+    player_y = [
+        input(f"Please enter column number (0-{players_grid.size - 1}): \n")
+    ]
 
-    while not player_y.isdigit() or not (0 <= int(player_y) < players_grid.size):
+    while (not player_y.isdigit() or
+           not (0 <= int(player_y) < players_grid.size)):
         print(f"{player_y} is not a valid input, please try again!")
-        player_y = input(f"Please enter column number (0-{players_grid.size - 1}): \n")
+        player_y = [
+            input(f"Enter column number (0-{players_grid.size - 1}): \n")
+        ]
     player_guess = (int(player_x), int(player_y))
     if player_guess in players_grid.guesses:
         print("You can't guess the same coordinates again...")
@@ -99,7 +107,7 @@ def take_input():
     if player_guess in computers_grid.ships:
         computers_grid.grid[player_guess[0]][player_guess[1]] = "X"
         points[0] += 1
-        print("It's a hit!💥") 
+        print("It's a hit!💥")
     elif computers_grid.grid[player_guess[0]][player_guess[1]] == "*":
         computers_grid.grid[player_guess[0]][player_guess[1]] = "M"
         players_grid.guesses.append(player_guess)
@@ -111,11 +119,12 @@ def take_input():
     create_computer_guess()
 
 
-
 def create_computer_guess():
     """
-    Creates random num for computer and puts the guess in the grid. Checks for hit
-    and reacts accordingly. Prints the grids. Calls reset game or take_input function.
+    Creates random num for computer and puts
+    the guess in the grid. Checks for hit
+    and reacts accordingly. Prints the grids.
+    Calls reset game or take_input function.
 
     """
     computer_x = random.randint(0, computers_grid.size - 1)
@@ -131,7 +140,7 @@ def create_computer_guess():
         players_grid.grid[computer_guess[0]][computer_guess[1]] = "X"
         points[1] += 1
         print("The computer has a hit!💥")
-        
+
     elif players_grid.grid[computer_guess[0]][computer_guess[1]] == "*":
         players_grid.grid[computer_guess[0]][computer_guess[1]] = "M"
         computers_grid.guesses.append(computer_guess)
@@ -159,8 +168,14 @@ def reset_game():
         computers_grid.ships = []
         computers_grid.place_ship()
         computers_grid.guesses = []
-        players_grid.grid = [["*"] * players_grid.size for _ in range(players_grid.size)]
-        computers_grid.grid = [["*"] * players_grid.size for _ in range(players_grid.size)]
+        players_grid.grid = [
+            ["*"] * players_grid.size
+            for _ in range(players_grid.size)
+        ]
+        computers_grid.grid = [
+            ["*"] * players_grid.size
+            for _ in range(players_grid.size)
+        ]
         players_grid.place_ship()
         players_grid.print_grid()
         computers_grid.print_grid()
@@ -178,6 +193,7 @@ def reset_game():
 
 def start_game():
     take_input()
+
 
 if __name__ == '__main__':
     start_game()

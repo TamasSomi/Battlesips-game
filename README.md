@@ -64,3 +64,21 @@ I used a chart to make easyer to build the game logic.
 ![screenshot of the chart created for game logic.](/docs/battleships-chart.png)
 
 
+## Bugs ##
+
+* I did not check for ship coordinates when placing multiple ships so sometimes i had just two ships on a grid.
+    * Solved by checking if the coordinates are already on the grid.
+
+## Remaining Bugs ##
+
+* There is not any bugs remained.
+
+## Validator Testing ##
+
+* PEP8
+    * No error were found with CI Python Linter
+
+    ![screenshot of the python linter result.](/docs/python-linter.png)
+
+
+
