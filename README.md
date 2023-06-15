@@ -71,7 +71,7 @@ I used a chart to make easyer to build the game logic.
 
 ## Remaining Bugs ##
 
-* There is not any bugs remained.
+* No bugs remaining.
 
 ## Validator Testing ##
 
@@ -94,7 +94,7 @@ I used a chart to make easyer to build the game logic.
 * Too high or invalid data inserted for coordinates:
     * ![screenshot of invalid coordinates message.](/docs/invalid-coordinates.png)
 
-* Same coordinate again:
+* Same coordinates again:
     * ![screenshot of same coordinates message.](/docs/same-coordinates.png)
 
 * Invalid input when asking if new game:    
@@ -105,7 +105,7 @@ I used a chart to make easyer to build the game logic.
 
 ## Deployment ##
 
-* This project was deployed isung Code Institute's mock terminal for Heroku.
+* This project was deployed using Code Institute's mock terminal for Heroku.
 
 * Steps for deployment:
     * Fork or clone this repository
