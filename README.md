@@ -88,8 +88,20 @@ I used a chart to make easyer to build the game logic.
 * Points and grids always updated as expected.
 * When game ends winner printed and if selected game reset as expected.
 
+* Negative coordinates inserted:
+    * ![screenshot of invalid negative input message.](/docs/negativ-value-input.png)
 
+* Too high or invalid data inserted for coordinates:
+    * ![screenshot of invalid coordinates message.](/docs/invalid-coordinates.png)
 
+* Same coordinate again:
+    * ![screenshot of same coordinates message.](/docs/same-coordinates.png)
+
+* Invalid input when asking if new game:    
+    * ![screenshot of invalid inputs when new game.](/docs/incorrect-input-newgame.png)
+
+* Winner displayed:
+    * ![screenshot of winner printed.](/docs/winner-indicated.png)
 
 ## Deployment ##
 
@@ -101,7 +113,7 @@ I used a chart to make easyer to build the game logic.
     * Set the buildpacks to Python and NodeJS in that order
     * Reveal config vars and set the key to PORT and the value to 8000
     * Link Heroku app to the repository
-    * click on Deploy
+    * Click on Deploy
 
 
 ## Credits ##
