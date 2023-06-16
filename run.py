@@ -19,6 +19,9 @@ class Grid:
         self.ships = []
 
     def print_grid(self):
+        """
+        Prints grids.
+        """
         print(f"{self.name}'s board:")
         for row in self.grid:
             for col in row:
@@ -27,6 +30,9 @@ class Grid:
         print()
 
     def place_ship(self):
+        """
+        Places ships on the boards.
+        """
         self.ships = []
         ships_to_place = computers_grid.num_ships
         while ships_to_place > 0:
@@ -45,6 +51,9 @@ class Grid:
 
 
 def starter_messages():
+    """
+    Prints welcome messages
+    """
     print(80*"_")
     print("\n Welcome to Battlesips Game!")
     print()
