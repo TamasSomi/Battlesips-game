@@ -97,6 +97,21 @@ I used a chart to make easyer to build the game logic.
 * Points and grids always updated as expected.
 * When game ends winner printed and if selected game reset as expected.
 
+* Steps during testing:
+    * When i run the program i see a welcome message and a sort description of the game.
+    * The game asks for user name
+    * When i enter invalid name the game prompts me to try again.
+    * When i eneter a vaild user name i see the user and the computer boards printed.
+    * The game asks for the first guess.
+    * When i enter invalid input, the game prompts me to try again.
+    * When i enter  valid coordinates the game tells me if i had a hit or missed.
+    i see the computers guess and the points, updated grids.
+    * When there is a winner, i see a message printed with the winner and the game asks me
+    if i would like to start a new game.
+    * if i enter invalid input, the game prompts me to try again.
+    * When i sey yes, i see the two boards printed reset.
+    * When i say no the program thanks the playing and exits.
+
 * Negative coordinates inserted:
     * ![screenshot of invalid negative input message.](/docs/negativ-value-input.png)
 
