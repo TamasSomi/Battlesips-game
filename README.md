@@ -64,6 +64,15 @@ I used a chart to make easyer to build the game logic.
 ![screenshot of the chart created for game logic.](/docs/battleships-chart.png)
 
 
+## Technology ##
+
+* Used technologys during development:
+    * Python
+    * GitHub
+    * CodeAnywhere
+    * Heroku
+
+
 ## Bugs ##
 
 * I did not check for ship coordinates when placing multiple ships so sometimes i had just two ships on a grid.
