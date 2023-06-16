@@ -61,20 +61,6 @@ def starter_messages():
     return player_name
 
 
-if __name__ == '__main__':
-    player_name = starter_messages()
-
-    players_grid = Grid(4, 3, player_name, type="Player")
-    computers_grid = Grid(4, 3, "Computer", type="Computer")
-
-    players_grid.place_ship()
-    players_grid.print_grid()
-    computers_grid.place_ship()
-    computers_grid.print_grid()
-    # print(f"Computer's ships: {computers_grid.ships}")
-    # print(f"Player's ships: {players_grid.ships}")
-
-
 def take_input():
     """
     Takes input from the user, validates the coordinates. Puts them
@@ -119,7 +105,6 @@ def create_computer_guess():
     the guess in the grid. Checks for hit
     and reacts accordingly. Prints the grids.
     Calls reset game or take_input function.
-
     """
     computer_x = random.randint(0, computers_grid.size - 1)
     computer_y = random.randint(0, computers_grid.size - 1)
@@ -190,4 +175,11 @@ def start_game():
 
 
 if __name__ == '__main__':
+    player_name = starter_messages()
+    players_grid = Grid(4, 3, player_name, type="Player")
+    computers_grid = Grid(4, 3, "Computer", type="Computer")
+    players_grid.place_ship()
+    players_grid.print_grid()
+    computers_grid.place_ship()
+    computers_grid.print_grid()
     start_game()
